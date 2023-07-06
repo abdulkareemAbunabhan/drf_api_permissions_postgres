@@ -4,6 +4,7 @@ from .models import Book, NewBooksInMarkets
 from .serializers import BookSerializer, NewBooksInMarketsSerializer
 from rest_framework.permissions import AllowAny, IsAuthenticated
 from .permissions import IsOwnerOrReadOnly
+from django.http import HttpResponse
 
 # Create your views here.
 
@@ -30,3 +31,6 @@ class NewBooksInMarketDetail(generics.RetrieveUpdateDestroyAPIView):
     queryset = NewBooksInMarkets.objects.all()
     serializer_class = NewBooksInMarketsSerializer
     permission_classes = [AllowAny]
+
+def HomeView(request):
+    return HttpResponse("Welcome to the Reading List RESTful API!")    
